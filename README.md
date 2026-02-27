@@ -1,2 +1,13 @@
 # Full Stack App
-## This is a NestJS and Next.js based full-stack web application with authentication, a role-based dashboard, and a blog/user management system, providing secure access control and dynamic data visualization using a NestJS backend and a Next.js frontend.
+
+This is a full-stack web application built with NestJS and Next.js.
+
+It includes authentication, a role-based dashboard, and blog/user management.
+
+## Tech Stack
+
+- NestJS
+- Next.js
+- PostgreSQL
+- Redux
+- Tailwind CSS

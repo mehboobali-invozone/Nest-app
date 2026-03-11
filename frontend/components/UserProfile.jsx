@@ -8,7 +8,7 @@ const UserProfile = ({ onClose }) => {
 
 const dispatch = useDispatch();
 
-const user = useSelector((s)=>s.auth.user);
+const user = useSelector((s)=>s.auth.user || {});
 
 const handleLogout = () => {
 

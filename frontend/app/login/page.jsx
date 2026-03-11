@@ -38,14 +38,9 @@ onSubmit: async (values, { setSubmitting }) => {
       values
     );
 
-    console.log("LOGIN RESPONSE =", res.data);
+    // console.log("LOGIN RESPONSE =", res.data);
 
-    dispatch(loginSuccess({
-      user: res.data.details,
-      token: res.data.token
-    }));
-
-    localStorage.setItem("token", res.data.token);
+    dispatch(loginSuccess(res.data)); // ✅ FIX
 
     router.push("/dashboard");
 

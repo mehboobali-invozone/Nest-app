@@ -5,63 +5,65 @@ let token = null;
 
 if (typeof window !== "undefined") {
 
-  try {
+try {
 
-    const storedUser = localStorage.getItem("user");
-    const storedToken = localStorage.getItem("token");
+const storedUser = localStorage.getItem("user");
+const storedToken = localStorage.getItem("token");
 
-    user =
-      storedUser && storedUser !== "undefined"
-        ? JSON.parse(storedUser)
-        : null;
+user = storedUser ? JSON.parse(storedUser) : null;
+token = storedToken || null;
 
-    token =
-      storedToken && storedToken !== "undefined"
-        ? storedToken
-        : null;
+} catch (error) {
 
-  } catch (error) {
+user = null;
+token = null;
 
-    console.log("LocalStorage Error:", error);
-
-    user = null;
-    token = null;
-
-  }
+}
 
 }
 
 const authSlice = createSlice({
-  name: "auth",
 
-  initialState: {
-    user,
-    token,
-  },
+name:"auth",
 
-  reducers: {
+initialState:{
+user,
+token
+},
 
-    loginSuccess: (state, action) => {
+reducers:{
 
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+loginSuccess:(state,action)=>{
 
-      localStorage.setItem("user", JSON.stringify(action.payload.user));
-      localStorage.setItem("token", action.payload.token);
-    },
+state.user = action.payload.user;
+state.token = action.payload.token;
 
-    logout: (state) => {
+localStorage.setItem(
+"user",
+JSON.stringify(action.payload.user)
+);
 
-      state.user = null;
-      state.token = null;
+localStorage.setItem(
+"token",
+action.payload.token
+);
 
-      localStorage.removeItem("user");
-      localStorage.removeItem("token");
-    }
+},
 
-  },
+logout:(state)=>{
+
+state.user=null;
+state.token=null;
+
+localStorage.removeItem("user");
+localStorage.removeItem("token");
+
+}
+
+}
+
 });
 
-export const { loginSuccess, logout } = authSlice.actions;
+export const {loginSuccess,logout}=authSlice.actions;
 
 export default authSlice.reducer;

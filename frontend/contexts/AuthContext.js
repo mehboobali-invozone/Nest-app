@@ -7,13 +7,11 @@ import { loginSuccess, logout } from "@/redux/authSlice";
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-
 const dispatch = useDispatch();
-
 const authState = useSelector((s)=>s.auth);
 
 const login = (data)=>{
-dispatch(loginSuccess(data));
+dispatch(loginSuccess(res.data.user))
 };
 
 const signOut = ()=>{
@@ -29,7 +27,6 @@ login,
 logout:signOut
 }}
 >
-
 {children}
 
 </AuthContext.Provider>

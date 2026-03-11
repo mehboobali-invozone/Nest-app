@@ -13,7 +13,9 @@ export class UserService {
   findAll() {
     return this.userRepo.find();
   }
-
+async findById(id: number) {
+  return this.userRepo.findOne({ where: { id } });
+}
   update(id: number, data: Partial<User>) {
     return this.userRepo.update(id, data);
   }
